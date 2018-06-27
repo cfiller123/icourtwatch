@@ -8,6 +8,6 @@ public class TestController {
     @RequestMapping(value="")
     @ResponseBody
     public String index(){
-        return "This is where your capstone will live.";
+        return "This is where your capstone will live. Test.";
     }
 }
