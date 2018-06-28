@@ -1,13 +1,14 @@
 package com.carlfiller.icourtwatch.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+@Controller
+@RequestMapping("")
 public class TestController {
 
-    @RequestMapping(value="")
-    @ResponseBody
+    @RequestMapping(value = "")
     public String index(){
-        return "This is where your capstone will live. Test.";
+        return "index";
     }
 }
