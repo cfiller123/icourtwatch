@@ -21,14 +21,13 @@ public class JudgeController {
     @Autowired
     private JudgeDao judgeDao;
 
-    @Autowired
-    private DispositionDao dispositionDao;
+//    @Autowired
+//    private DispositionDao dispositionDao;
 
     @RequestMapping(value = "")
     public String index(Model model){
 
         model.addAttribute("title","Welcome to CourtWatch!");
-
         return "judge/index";
     }
 

@@ -1,10 +1,26 @@
 package com.carlfiller.icourtwatch.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Judge {
 
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private int court;
+
+    @NotNull
     private String defendant;
+
     private Disposition disposition;
 
     public Judge(String name, int court, String defendant) {
@@ -15,6 +31,10 @@ public class Judge {
     }
 
     public Judge() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
