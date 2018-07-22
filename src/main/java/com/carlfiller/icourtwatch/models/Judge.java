@@ -1,7 +1,5 @@
 package com.carlfiller.icourtwatch.models;
 
-import javax.validation.constraints.NotNull;
-
 public class Judge {
 
     private String name;
