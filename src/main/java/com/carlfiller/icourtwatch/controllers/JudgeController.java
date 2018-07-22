@@ -4,8 +4,12 @@ import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("judge")
@@ -26,5 +30,17 @@ public class JudgeController {
         model.addAttribute(new Judge());
         model.addAttribute("dispositions",Disposition.values());
         return "judge/addwatch";
+    }
+
+    @RequestMapping(value = "addwatch", method = RequestMethod.POST)
+    public String processAddWatchForm(@ModelAttribute @Valid Judge newJudge, Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title","Add Your Court Watch");
+            model.addAttribute(new Judge());
+            return "judge/addwatch";
+        }
+
+        return "redirect:";
     }
 }
