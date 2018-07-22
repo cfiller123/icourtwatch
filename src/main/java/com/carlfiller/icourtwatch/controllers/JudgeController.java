@@ -18,7 +18,7 @@ public class JudgeController {
         return "judge/index";
     }
 
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @RequestMapping(value = "addwatch", method = RequestMethod.GET)
     public String displayAddWatchForm(Model model) {
 
         model.addAttribute("title","Add Your Court Watch");
