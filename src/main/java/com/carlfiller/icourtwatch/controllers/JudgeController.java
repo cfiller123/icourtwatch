@@ -1,5 +1,6 @@
 package com.carlfiller.icourtwatch.controllers;
 
+import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,7 @@ public class JudgeController {
 
         model.addAttribute("title","Add Your Court Watch");
         model.addAttribute(new Judge());
+        model.addAttribute("disposition",Disposition.values());
         return "judge/addwatch";
     }
 }
