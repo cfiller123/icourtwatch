@@ -27,8 +27,8 @@
 
     <div class="form-group">
         <label th:for="disposition">Case Disposition</label>
-        <select name="disposition">
-            <option th:each="disposition : ${disposition}"
+        <select th:field="*{disposition}">
+            <option th:each="disposition : ${dispositions}"
                     th:text="${disposition.name}"
                     th:value="${disposition}"></option>
         </select>

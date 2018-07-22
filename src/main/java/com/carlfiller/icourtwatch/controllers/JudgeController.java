@@ -24,7 +24,7 @@ public class JudgeController {
 
         model.addAttribute("title","Add Your Court Watch");
         model.addAttribute(new Judge());
-        model.addAttribute("disposition",Disposition.values());
+        model.addAttribute("dispositions",Disposition.values());
         return "judge/addwatch";
     }
 }
