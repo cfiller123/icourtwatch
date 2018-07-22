@@ -13,6 +13,6 @@ public class JudgeController {
 
         model.addAttribute("title","Welcome to CourtWatch!");
 
-        return "index";
+        return "judge/index";
     }
 }
