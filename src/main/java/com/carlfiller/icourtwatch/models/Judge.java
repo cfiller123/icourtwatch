@@ -16,6 +16,9 @@ public class Judge {
 
     }
 
+    public Judge() {
+    }
+
     public String getName() {
         return name;
     }
