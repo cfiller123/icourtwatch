@@ -2,7 +2,7 @@ package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
-import com.carlfiller.icourtwatch.models.data.DispositionDao;
+//import com.carlfiller.icourtwatch.models.data.DispositionDao;
 import com.carlfiller.icourtwatch.models.data.JudgeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

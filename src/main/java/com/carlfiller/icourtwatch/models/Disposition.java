@@ -1,5 +1,8 @@
 package com.carlfiller.icourtwatch.models;
 
+//import javax.persistence.Entity;
+//
+//@Entity
 public enum Disposition {
 
     CONTINUANCE ("Continuance"),
