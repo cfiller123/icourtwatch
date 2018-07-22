@@ -5,15 +5,22 @@ import javax.validation.constraints.NotNull;
 public class Judge {
 
     private String name;
-    private String court;
+    private int court;
     private String defendant;
     private Disposition disposition;
+
+    public Judge(String name, int court, String defendant) {
+        this.name = name;
+        this.court = court;
+        this.defendant = defendant;
+
+    }
 
     public String getName() {
         return name;
     }
 
-    public String getCourt() {
+    public int getCourt() {
         return court;
     }
 
@@ -29,7 +36,7 @@ public class Judge {
         this.name = name;
     }
 
-    public void setCourt(String court) {
+    public void setCourt(int court) {
         this.court = court;
     }
 
