@@ -2,6 +2,9 @@ package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
+import com.carlfiller.icourtwatch.models.data.DispositionDao;
+import com.carlfiller.icourtwatch.models.data.JudgeDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,6 +17,12 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("judge")
 public class JudgeController {
+
+    @Autowired
+    private JudgeDao judgeDao;
+
+    @Autowired
+    private DispositionDao dispositionDao;
 
     @RequestMapping(value = "")
     public String index(Model model){
@@ -41,6 +50,7 @@ public class JudgeController {
             return "judge/addwatch";
         }
 
+        judgeDao.save(newJudge);
         return "redirect:";
     }
 }
