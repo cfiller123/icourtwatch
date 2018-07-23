@@ -32,9 +32,10 @@ public class UserController {
         model.addAttribute(user);
 
         if (!errors.hasErrors()) {
-            return "user/signup";
+            model.addAttribute("title", "Register Your Account");
+            return "judge/index";
         }
 
-        return "judge/index";
+        return "user/signup";
     }
 }
