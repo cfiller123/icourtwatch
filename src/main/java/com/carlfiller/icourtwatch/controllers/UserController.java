@@ -1,6 +1,8 @@
 package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.User;
+import com.carlfiller.icourtwatch.models.data.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -13,6 +15,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("user")
 public class UserController {
+
+    @Autowired
+    private UserDao userDao;
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model) {
@@ -32,10 +37,11 @@ public class UserController {
         model.addAttribute(user);
 
         if (!errors.hasErrors()) {
-            model.addAttribute("title", "Register Your Account");
+            userDao.save(user);
             return "judge/index";
         }
 
+        model.addAttribute("title", "Register Your Account");
         return "user/signup";
     }
 }
