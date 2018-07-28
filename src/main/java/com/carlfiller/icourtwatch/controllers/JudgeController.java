@@ -2,7 +2,6 @@ package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
-//import com.carlfiller.icourtwatch.models.data.DispositionDao;
 import com.carlfiller.icourtwatch.models.data.JudgeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,17 +15,10 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("judge")
-public class JudgeController {
+public class JudgeController extends AbstractController {
 
-    @Autowired
-    private JudgeDao judgeDao;
-
-//    @Autowired
-//    private DispositionDao dispositionDao;
-
-    @RequestMapping(value = "")
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model){
-
         model.addAttribute("title","Welcome to CourtWatch!");
         return "judge/index";
     }
