@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+// TODO: fix up user controller to work with new abstract controller etc
+
 @Controller
 @RequestMapping("user")
 public class UserController {
