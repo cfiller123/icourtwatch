@@ -77,7 +77,7 @@ public class UserController extends AbstractController {
         }
 
         setUserInSession(request.getSession(), theUser);
-        return "redirect:";
+        return "/judge/index";
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
