@@ -39,7 +39,7 @@ public class UserController {
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     public String processUserSignUpForm(Model model, @ModelAttribute @Valid User user, Errors errors, HttpServletResponse response) {
         model.addAttribute(user);
-
+//TODO Make sure account doesn't already exist.
         if (!errors.hasErrors()) {
             userDao.save(user);
             Cookie logincookie = new Cookie("user", user.getUsername());
