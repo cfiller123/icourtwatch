@@ -42,6 +42,6 @@ public class JudgeController extends AbstractController {
         }
 
         judgeDao.save(newJudge);
-        return "redirect:";
+        return "judge/index";
     }
 }
