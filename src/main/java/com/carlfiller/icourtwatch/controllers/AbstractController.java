@@ -14,6 +14,7 @@ public abstract class AbstractController {
     @Autowired
     protected UserDao userDao;
 
+    @Autowired
     protected JudgeDao judgeDao;
 
     public static final String userSessionKey = "user_id";
