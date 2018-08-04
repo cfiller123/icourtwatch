@@ -9,7 +9,24 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 
+<div th:unless="${judge}">
+    <h2>No Watches</h2>
+</div>
+
+    <div th:if="${judge}">
+        <div  th:each="judge : ${judges}">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td th:text="${judge.name}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
 Add a new <a href="/judge/addwatch">Court Watch</a>.
+
 
 </body>
 </html>
