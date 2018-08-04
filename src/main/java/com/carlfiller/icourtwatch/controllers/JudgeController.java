@@ -52,6 +52,7 @@ public class JudgeController extends AbstractController {
     public String viewWatch(Model model, int id) {
         Judge foundJudge = judgeDao.findOne(id);
         model.addAttribute("judge", foundJudge);
-        return "judge/viewatch";
+        model.addAttribute("dispositions", Disposition.values());
+        return "judge/viewwatch";
     }
 }
