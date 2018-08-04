@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="'Edit ' + ${judge.name} +'(id=' + ${judge.id} + ')'">Default Title</h1>
+
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" action="/judge/edit" th:object="${judge}">
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}"/>
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="court">Description</label>
+        <input class="form-control" th:field="*{court}"/>
+        <span th:errors="*{court}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="defendant">Description</label>
+        <input class="form-control" th:field="*{defendant}"/>
+        <span th:errors="*{defendant}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="type">Type</label>
+        <select th:field="*{disposition}">
+            <option th:each="disposition : ${dispositions}"
+                    th:text="${disposition.name}"
+                    th:value="${disposition}"></option>
+        </select>
+    </div>
+    <input type="hidden" th:value="${judge.id}" name="judgeId" />
+    <input type="submit" value="Edit Watch" />
+</form>
+
+</body>
+</html>
