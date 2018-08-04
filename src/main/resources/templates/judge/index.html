@@ -9,15 +9,15 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 
-<div th:unless="${judge}">
+<div th:unless="${judges}">
     <h2>No Watches</h2>
 </div>
 
-    <div th:if="${judge}">
+    <div th:if="${judges}">
         <div  th:each="judge : ${judges}">
             <table>
                 <tr>
-                    <th>Name</th>
+                    <th>Name: &nbsp;</th>
                     <td th:text="${judge.name}"></td>
                 </tr>
             </table>
