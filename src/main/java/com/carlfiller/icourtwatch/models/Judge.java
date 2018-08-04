@@ -18,6 +18,8 @@ public class Judge {
     @NotNull
     private int court;
 
+    // TODO: Add a date and update controller and views accordingly
+
     @NotNull
     private String defendant;
 
