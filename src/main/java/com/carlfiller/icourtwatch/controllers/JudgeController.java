@@ -55,10 +55,10 @@ public class JudgeController extends AbstractController {
     }
 
     @RequestMapping(value = "viewwatch", method = RequestMethod.POST)
-    public String processViewWatch(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model, int id) {
+    public String processViewWatch(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            return "judge/viewwatch?id=" + id;
+            return "redirect:";
 
         }
 
