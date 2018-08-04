@@ -46,7 +46,7 @@ public class UserController extends AbstractController {
         User newUser = new User(form.getUsername(), form.getPassword());
         userDao.save(newUser);
         setUserInSession(request.getSession(), newUser);
-        return "judge/index";
+        return "redirect:/judge/index";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
@@ -77,7 +77,7 @@ public class UserController extends AbstractController {
         }
 
         setUserInSession(request.getSession(), theUser);
-        return "/judge/index";
+        return "redirect:/judge/index";
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
