@@ -1,9 +1,8 @@
 package com.carlfiller.icourtwatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 public class Judge {
@@ -18,16 +17,19 @@ public class Judge {
     @NotNull
     private int court;
 
-    // TODO: Add a date and update controller and views accordingly
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @NotNull
     private String defendant;
 
     private Disposition disposition;
 
-    public Judge(String name, int court, String defendant) {
+    public Judge(String name, int court, Date date, String defendant) {
         this.name = name;
         this.court = court;
+        this.date = date;
         this.defendant = defendant;
 
     }
@@ -69,5 +71,13 @@ public class Judge {
 
     public void setDisposition(Disposition disposition) {
         this.disposition = disposition;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -41,6 +41,7 @@ public class JudgeController extends AbstractController {
         if (errors.hasErrors()) {
             model.addAttribute("title","Add Your Court Watch");
             model.addAttribute(new Judge());
+            model.addAttribute("dispositions",Disposition.values());
             return "judge/addwatch";
         }
 
