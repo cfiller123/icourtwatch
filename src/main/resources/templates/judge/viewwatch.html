@@ -4,7 +4,7 @@
 
 <body class="container">
 
-<h1 th:text="'Edit ' + ${judge.name} +'(id=' + ${judge.id} + ')'">Default Title</h1>
+<h1 th:text="'Edit ' + ${judge.name} + '(observed on ' + ${judge.getFormattedStartDate()} + ')'">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 

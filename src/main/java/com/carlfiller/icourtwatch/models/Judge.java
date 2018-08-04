@@ -87,4 +87,9 @@ public class Judge {
     public void setDate(Date date) {
         this.date = date;
     }
+
+
+    public String getFormattedStartDate() {
+        return Judge.SIMPLE_DATE_FORMAT.format(date);
+    }
 }

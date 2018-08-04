@@ -2,6 +2,7 @@ package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
+import com.carlfiller.icourtwatch.models.data.JudgeDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -51,5 +52,16 @@ public class JudgeController extends AbstractController {
         model.addAttribute("judge", foundJudge);
         model.addAttribute("dispositions", Disposition.values());
         return "judge/viewwatch";
+    }
+
+    @RequestMapping(value = "viewwatch", method = RequestMethod.POST)
+    public String processViewWatch(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model, int id) {
+
+        if (errors.hasErrors()) {
+            return "judge/viewwatch?id=" + id;
+
+        }
+
+        return "redirect:/judge/index";
     }
 }
