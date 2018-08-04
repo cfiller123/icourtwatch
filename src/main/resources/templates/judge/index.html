@@ -8,7 +8,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-
+<br />
 <div th:unless="${judges}">
     <h2>No Watches</h2>
 </div>
@@ -17,8 +17,8 @@
         <div  th:each="judge : ${judges}">
             <table>
                 <tr>
-                    <th>Name: &nbsp;</th>
-                    <td><a th:href="@{/judge/viewwatch(id=${judge.id})}" th:text="${judge.name}"></a></td>
+                    <th>Court Watch: &nbsp;</th>
+                    <td><a th:href="@{/judge/viewwatch(id=${judge.id})}" th:text="'Judge ' +${judge.name} + '\'s court on ' + ${judge.date}"></a></td>
                 </tr>
             </table>
         </div>

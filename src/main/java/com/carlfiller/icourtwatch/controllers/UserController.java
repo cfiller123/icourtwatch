@@ -18,7 +18,7 @@ public class UserController extends AbstractController {
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("title", "User Management Page");
+        model.addAttribute("title", "Welcome to CourtWatch!");
         return "user/index";
     }
 
