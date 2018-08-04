@@ -1,11 +1,18 @@
 package com.carlfiller.icourtwatch.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
 public class Judge {
+
+    private static final String START_DATE_FORMAT_PATTERN = "MM/dd/yyyy";
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT
+            = new SimpleDateFormat(START_DATE_FORMAT_PATTERN);
 
     @Id
     @GeneratedValue
@@ -17,8 +24,8 @@ public class Judge {
     @NotNull
     private int court;
 
-    @NotNull
-    @Temporal(TemporalType.DATE)
+    @NotNull(message = "Please enter a valid date")
+    @DateTimeFormat(pattern = START_DATE_FORMAT_PATTERN)
     private Date date;
 
     @NotNull

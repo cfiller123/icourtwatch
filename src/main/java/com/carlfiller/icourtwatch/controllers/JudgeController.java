@@ -42,7 +42,7 @@ public class JudgeController extends AbstractController {
         }
 
         judgeDao.save(newJudge);
-        return "judge/index";
+        return "redirect:/judge/index";
     }
 
     @RequestMapping(value = "viewwatch", method = RequestMethod.GET)
