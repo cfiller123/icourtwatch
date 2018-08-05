@@ -62,8 +62,13 @@ public class JudgeController extends AbstractController {
 
         }
         Judge foundJudge = judgeDao.findOne(judgeId);
-        judgeDao.setUserInfoById(updateJudge.getName(),updateJudge.getCourt(),updateJudge.getDate(),updateJudge.getDefendant(), updateJudge.getDisposition(), updateJudge.getId());
+        foundJudge.setName(updateJudge.getName());
+        foundJudge.setDisposition(updateJudge.getDisposition());
+        foundJudge.setCourt(updateJudge.getCourt());
+        foundJudge.setDate(updateJudge.getDate());
         judgeDao.save(foundJudge);
+//        judgeDao.setUserInfoById(updateJudge.getName(),updateJudge.getCourt(),updateJudge.getDate(),updateJudge.getDefendant(), updateJudge.getDisposition(), updateJudge.getId());
+//        judgeDao.save(foundJudge);
         return "redirect:/judge/index";
     }
 }

@@ -16,5 +16,5 @@ public interface JudgeDao extends CrudRepository<Judge, Integer> {
 
     @Modifying
     @Query("update Judge j set j.name = ?1, j.court = ?2, j.date = ?3, j.defendant = ?4, j.disposition = ?5 where j.id = ?6")
-    void setUserInfoById(String name, int court, Date date, String defendant, Disposition disposition, Integer id);
+    void setUserInfoById(String name, int court, Date date, String defendant, Disposition disposition, int id);
 }
