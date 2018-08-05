@@ -55,13 +55,15 @@ public class JudgeController extends AbstractController {
     }
 
     @RequestMapping(value = "viewwatch", method = RequestMethod.POST)
-    public String processViewWatch(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model) {
+    public String processViewWatch(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model, int judgeId) {
 
         if (errors.hasErrors()) {
             return "redirect:";
 
         }
-
+        Judge foundJudge = judgeDao.findOne(judgeId);
+        judgeDao.setUserInfoById(updateJudge.getName(),updateJudge.getCourt(),updateJudge.getDate(),updateJudge.getDefendant(), updateJudge.getDisposition(), updateJudge.getId());
+        judgeDao.save(foundJudge);
         return "redirect:/judge/index";
     }
 }
