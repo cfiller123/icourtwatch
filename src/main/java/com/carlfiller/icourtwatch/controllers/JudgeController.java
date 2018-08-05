@@ -3,6 +3,13 @@ package com.carlfiller.icourtwatch.controllers;
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
 import com.carlfiller.icourtwatch.models.data.JudgeDao;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Projections;
+import org.springframework.data.jpa.provider.HibernateUtils;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -72,6 +79,9 @@ public class JudgeController extends AbstractController {
 
     @RequestMapping(value = "summary", method = RequestMethod.GET)
     public String displaySummary(Model model) {
+        int watches = 0;
+        model.addAttribute(watches);
+
         return "judge/summary";
     }
 }
