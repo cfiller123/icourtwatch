@@ -67,8 +67,11 @@ public class JudgeController extends AbstractController {
         foundJudge.setCourt(updateJudge.getCourt());
         foundJudge.setDate(updateJudge.getDate());
         judgeDao.save(foundJudge);
-//        judgeDao.setUserInfoById(updateJudge.getName(),updateJudge.getCourt(),updateJudge.getDate(),updateJudge.getDefendant(), updateJudge.getDisposition(), updateJudge.getId());
-//        judgeDao.save(foundJudge);
         return "redirect:/judge/index";
+    }
+
+    @RequestMapping(value = "summary", method = RequestMethod.GET)
+    public String displaySummary(Model model) {
+        return "judge/summary";
     }
 }
