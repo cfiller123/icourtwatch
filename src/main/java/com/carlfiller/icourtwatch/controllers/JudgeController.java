@@ -73,6 +73,16 @@ public class JudgeController extends AbstractController {
         return "redirect:/judge/index";
     }
 
+    @RequestMapping(value = "removewatch", method = RequestMethod.GET)
+    public String viewRemoveWatch(Model model, int id) {
+        Judge foundJudge = judgeDao.findOne(id);
+        model.addAttribute("title","Delete Watch");
+        model.addAttribute("judge", foundJudge);
+        model.addAttribute("dispositions", Disposition.values());
+
+        return "/judge/removewatch";
+    }
+
     @RequestMapping(value = "summary", method = RequestMethod.GET)
     public String displaySummary(Model model) {
         model.addAttribute("title", "Summary Statistics");

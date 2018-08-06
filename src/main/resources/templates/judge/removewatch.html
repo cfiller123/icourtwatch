@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br/>Judge Name: <span th:text="${judge.name}"></span>
+<br/>Court Number: <span th:text="${judge.court}"></span>
+<br/>Watch Date: <span th:text="${judge.date}"></span>
+<br/>Defendant: <span th:text="${judge.defendant}"></span>
+<br/>Disposition: <span th:text="${disposition.name}"></span>
+<form method="post">
+    <input type="submit" value="Delete Watch" />
+</form>
+
+
+</body>
+</html>
