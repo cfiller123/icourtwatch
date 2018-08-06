@@ -20,6 +20,9 @@
                     <th>Court Watch: &nbsp;</th>
                     <td><a th:href="@{/judge/viewwatch(id=${judge.id})}" th:text="'Judge ' +${judge.name} + '\'s court on ' + ${judge.getFormattedStartDate()}"></a></td>
                 </tr>
+                <tr>
+                    <th><a th:href="@{/judge/removewatch(id=${judge.id})}" th:text="Delete"></a></th>
+                </tr>
             </table>
         </div>
     </div>

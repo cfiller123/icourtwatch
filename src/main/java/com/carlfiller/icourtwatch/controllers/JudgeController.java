@@ -78,9 +78,18 @@ public class JudgeController extends AbstractController {
         Judge foundJudge = judgeDao.findOne(id);
         model.addAttribute("title","Delete Watch");
         model.addAttribute("judge", foundJudge);
-        model.addAttribute("dispositions", Disposition.values());
+        model.addAttribute("disposition", foundJudge.getDisposition());
 
         return "/judge/removewatch";
+    }
+
+    @RequestMapping(value = "removewatch", method = RequestMethod.POST)
+    public String processRemoveWatch(@ModelAttribute Judge judge, Model model, int judgeId) {
+        // TODO: Flash message warning user that they're about to delete a judge
+
+        judgeDao.delete(judgeId);
+
+        return "redirect:/judge/index";
     }
 
     @RequestMapping(value = "summary", method = RequestMethod.GET)

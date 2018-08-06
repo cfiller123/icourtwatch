@@ -12,8 +12,9 @@
 <br/>Court Number: <span th:text="${judge.court}"></span>
 <br/>Watch Date: <span th:text="${judge.date}"></span>
 <br/>Defendant: <span th:text="${judge.defendant}"></span>
-<br/>Disposition: <span th:text="${disposition.name}"></span>
+<br/>Disposition: <span th:text="${disposition}"></span>
 <form method="post">
+    <input type="hidden" th:value="${judge.id}" name="judgeId" />
     <input type="submit" value="Delete Watch" />
 </form>
 
