@@ -9,11 +9,11 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <br />
-<div th:unless="${judges}">
+<div th:unless="${watches}">
     <h2>No Watches</h2>
 </div>
 
-<p th:text = "'There have been a total of ' + ${watches} '.'" />
+<p>There have been <span th:text="${watches}"/> court watches to date.</p>
 
 
 
