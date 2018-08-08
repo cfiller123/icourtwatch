@@ -30,7 +30,7 @@ public class UserController extends AbstractController {
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
-    public String processSignupForm (@ModelAttribute @Valid RegisterForm form, Errors errors, HttpServletRequest request) {
+    public String processSignupForm (@ModelAttribute @Valid RegisterForm form, Errors errors, Model model, HttpServletRequest request) {
 
         if (errors.hasErrors()) {
             return "user/signup";
@@ -40,6 +40,7 @@ public class UserController extends AbstractController {
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists","A user with that username already exists");
+            model.addAttribute("title", "Register Your Account");
             return "user/signup";
         }
 
