@@ -3,7 +3,6 @@ package com.carlfiller.icourtwatch.models.data;
 import java.util.List;
 import java.util.Map;
 
-import com.carlfiller.icourtwatch.models.CanvasjsChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 

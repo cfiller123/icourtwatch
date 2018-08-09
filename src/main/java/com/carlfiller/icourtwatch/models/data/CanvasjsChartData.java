@@ -1,4 +1,4 @@
-package com.carlfiller.icourtwatch.models;
+package com.carlfiller.icourtwatch.models.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
