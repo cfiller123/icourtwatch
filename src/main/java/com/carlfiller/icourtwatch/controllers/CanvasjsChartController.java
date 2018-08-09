@@ -3,7 +3,7 @@ package com.carlfiller.icourtwatch.controllers;
 import java.util.List;
 import java.util.Map;
 
-import com.carlfiller.icourtwatch.models.data.CanvasjsChartService;
+import com.carlfiller.icourtwatch.models.service.CanvasjsChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
