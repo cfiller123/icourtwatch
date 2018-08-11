@@ -2,6 +2,9 @@ package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
+import com.carlfiller.icourtwatch.models.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -91,11 +95,13 @@ public class JudgeController extends AbstractController {
     }
 
     @RequestMapping(value = "summary", method = RequestMethod.GET)
-    public String displaySummary(Model model) {
+    public String displaySummary(Model model, HttpServletRequest request) {
+        User user = getUserFromSession(request.getSession());
+        String name = user.getUsername();
 
         model.addAttribute("title", "Summary Statistics");
         model.addAttribute("watches",judgeDao.findAll().size());
-        model.addAttribute("yourname","placeholder");
+        model.addAttribute("yourname",name);
 
         return "judge/summary";
     }
