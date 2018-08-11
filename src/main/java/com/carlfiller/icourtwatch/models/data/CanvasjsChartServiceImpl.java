@@ -1,9 +1,8 @@
-package com.carlfiller.icourtwatch.models.service;
+package com.carlfiller.icourtwatch.models.data;
 
 import java.util.List;
 import java.util.Map;
 
-import com.carlfiller.icourtwatch.models.data.CanvasjsChartDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
