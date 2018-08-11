@@ -3,8 +3,6 @@ package com.carlfiller.icourtwatch.controllers;
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
 import com.carlfiller.icourtwatch.models.User;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -21,7 +19,6 @@ public class JudgeController extends AbstractController {
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model, HttpServletRequest request){
-        // TODO: Create a list of last 10 watches to pass to the view.
         User user = getUserFromSession(request.getSession());
         int ownerId = user.getId();
         model.addAttribute("title","Welcome to CourtWatch!");

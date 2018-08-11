@@ -14,7 +14,7 @@
 </div>
 
     <div th:if="${judges}">
-        <div  th:each="judge : ${judges}">
+        <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 4}">
             <table>
                 <tr>
                     <th>Court Watch: &nbsp;</th>
