@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("data")
-public class CanvasjsChartController {
+public class CanvasjsChartController extends AbstractController{
 
     @Autowired(required = false) //Take off false to see error.
     private CanvasjsChartService canvasjsChartService;

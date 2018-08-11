@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.validation.Valid;
 
 @Controller
@@ -91,8 +92,10 @@ public class JudgeController extends AbstractController {
 
     @RequestMapping(value = "summary", method = RequestMethod.GET)
     public String displaySummary(Model model) {
+
         model.addAttribute("title", "Summary Statistics");
         model.addAttribute("watches",judgeDao.findAll().size());
+        model.addAttribute("yourname","placeholder");
 
         return "judge/summary";
     }
