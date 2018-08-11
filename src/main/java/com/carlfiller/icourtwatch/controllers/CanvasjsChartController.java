@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("data")
 public class CanvasjsChartController {
 
-    @Autowired
+    @Autowired(required = false) //Take off false to see error.
     private CanvasjsChartService canvasjsChartService;
 
     @RequestMapping(method = RequestMethod.GET)

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+
+
+</head>
 
 <body class="container">
 
-<h1 th:text="'Edit ' + ${judge.name} + '(observed on ' + ${judge.getFormattedStartDate()} + ')'">Default Title</h1>
+<h1 th:text="'Edit ' + ${judge.name} + ' (observed on ' + ${judge.getFormattedStartDate()} + ')'">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" style="max-width:600px;" action="/judge/viewwatch" th:object="${judge}">
+<form method="post" id="editForm" style="max-width:600px;" action="/judge/viewwatch" th:object="${judge}" onsubmit="return confirm('Do you want to edit?');">
     <div class="form-group">
         <label th:for="name">Name</label>
         <input class="form-control" th:field="*{name}"/>
         <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="court">Description</label>
+        <label th:for="court">Court Number</label>
         <input class="form-control" th:field="*{court}"/>
         <span th:errors="*{court}" class="error"></span>
     </div>
@@ -25,7 +28,7 @@
         <span th:errors="*{date}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="defendant">Description</label>
+        <label th:for="defendant">Defendant</label>
         <input class="form-control" th:field="*{defendant}"/>
         <span th:errors="*{defendant}" class="error"></span>
     </div>
@@ -38,7 +41,7 @@
         </select>
     </div>
     <input type="hidden" th:value="${judge.id}" name="judgeId" />
-    <input type="submit" value="Edit Watch" />
+    <input type="submit" value="Edit Watch"/>
 </form>
 
 </body>

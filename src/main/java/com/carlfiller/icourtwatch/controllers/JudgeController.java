@@ -65,6 +65,7 @@ public class JudgeController extends AbstractController {
         foundJudge.setDisposition(updateJudge.getDisposition());
         foundJudge.setCourt(updateJudge.getCourt());
         foundJudge.setDate(updateJudge.getDate());
+        foundJudge.setDefendant(updateJudge.getDefendant());
         judgeDao.save(foundJudge);
         return "redirect:/judge/index";
     }
