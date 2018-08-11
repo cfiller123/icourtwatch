@@ -31,7 +31,6 @@ public class Judge {
     @NotNull
     private String defendant;
 
-
     private Disposition disposition;
 
     public Judge(String name, int court, Date date, String defendant) {
