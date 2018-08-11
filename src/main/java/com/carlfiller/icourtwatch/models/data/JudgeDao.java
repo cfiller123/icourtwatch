@@ -20,4 +20,6 @@ public interface JudgeDao extends CrudRepository<Judge, Integer> {
 
     @Override
     List<Judge> findAll();
+
+    List<Judge> findByOwnerId(int ownerId);
 }

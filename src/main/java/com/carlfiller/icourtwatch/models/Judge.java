@@ -33,11 +33,14 @@ public class Judge {
 
     private Disposition disposition;
 
-    public Judge(String name, int court, Date date, String defendant) {
+    private int ownerId;
+
+    public Judge(String name, int court, Date date, String defendant, Disposition disposition) {
         this.name = name;
         this.court = court;
         this.date = date;
         this.defendant = defendant;
+        this.disposition = disposition;
 
     }
 
@@ -88,6 +91,13 @@ public class Judge {
         this.date = date;
     }
 
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
 
     public String getFormattedStartDate() {
         return Judge.SIMPLE_DATE_FORMAT.format(date);

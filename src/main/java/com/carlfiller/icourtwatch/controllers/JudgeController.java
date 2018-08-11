@@ -20,10 +20,12 @@ import javax.validation.Valid;
 public class JudgeController extends AbstractController {
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String index(Model model){
+    public String index(Model model, HttpServletRequest request){
         // TODO: Create a list of last 10 watches to pass to the view.
+        User user = getUserFromSession(request.getSession());
+        int ownerId = user.getId();
         model.addAttribute("title","Welcome to CourtWatch!");
-        model.addAttribute("judges", judgeDao.findAll());
+        model.addAttribute("judges", judgeDao.findByOwnerId(ownerId));
         return "judge/index";
     }
 
@@ -37,15 +39,16 @@ public class JudgeController extends AbstractController {
     }
 
     @RequestMapping(value = "addwatch", method = RequestMethod.POST)
-    public String processAddWatchForm(@ModelAttribute @Valid Judge newJudge, Errors errors, Model model) {
-
+    public String processAddWatchForm(@ModelAttribute @Valid Judge newJudge, Errors errors, Model model, HttpServletRequest request) {
+        User user = getUserFromSession(request.getSession());
+        int userId = user.getId();
         if (errors.hasErrors()) {
             model.addAttribute("title","Add Your Court Watch");
             model.addAttribute(new Judge());
             model.addAttribute("dispositions",Disposition.values());
             return "judge/addwatch";
         }
-
+        newJudge.setOwnerId(userId);
         judgeDao.save(newJudge);
         return "redirect:/judge/index";
     }
