@@ -3,7 +3,7 @@ package com.carlfiller.icourtwatch.controllers;
 import java.util.List;
 import java.util.Map;
 
-import com.carlfiller.icourtwatch.models.data.CanvasjsChartService;
+import com.carlfiller.icourtwatch.models.service.CanvasjsChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("data")
 public class CanvasjsChartController {
 
-    @Autowired(required = false)
+    @Autowired
     private CanvasjsChartService canvasjsChartService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String springMVC(ModelMap modelMap) {
         List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
         modelMap.addAttribute("dataPointsList", canvasjsDataList);
-        return "data/chart";
+        return "chart.jsp";
     }
 
 }

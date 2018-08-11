@@ -1,4 +1,4 @@
-package com.carlfiller.icourtwatch.models.data;
+package com.carlfiller.icourtwatch.models.service;
 
 import java.util.List;
 import java.util.Map;
