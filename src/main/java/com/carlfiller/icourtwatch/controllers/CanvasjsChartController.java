@@ -18,9 +18,9 @@ public class CanvasjsChartController extends AbstractController{
     private CanvasjsChartService canvasjsChartService;
 
     @RequestMapping(value="index", method = RequestMethod.GET)
-    public String springMVC(ModelMap modelMap) {
+    public String springMVC(ModelMap modelmap) {
         List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
-        modelMap.addAttribute("dataPointsList", canvasjsDataList);
+        modelmap.addAttribute("dataPointsList", canvasjsDataList);
         return "index";
     }
 
