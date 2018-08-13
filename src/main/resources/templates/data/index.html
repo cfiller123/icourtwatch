@@ -2,49 +2,49 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-    <script type="text/javascript">
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" th:inline="javascript" class="init">
+
+/*<![CDATA[*/
+
 window.onload = function() {
-var dps = [[]];
+var dps = [];
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	exportEnabled: true,
 	title: {
-		text: "Simple Column Chart with Index Labels"
+		text: "CourtWatch Results by Judge"
 	},
 	data: [{
-		type: "column", //change type to bar, line, area, pie, etc
-		//indexLabel: "{y}", //Shows y value on all Data Points
+		type: "column",
+		//indexLabel: "{y}",
 		indexLabelFontColor: "#5A5757",
-		dataPoints: dps[0]
+		dataPoints: dps
 	}]
 });
-var xValue;
-var yValue;
-var indexLabel;
 
-/*<![CDATA[*/
-    /*[# th:each="dataPoints, iter : ${dataPointsList"}"]*/
-        /*[# th:each="dataPoint : ${dataPoints}"}"]*/
-            xValue = parseInt(/*[[${dataPoint.x}]]*/);
-            yValue = parseFloat(/*[[${dataPoint.y}]]*/);
-            indexLabel = /*[[${dataPoint.indexLabel}]]*/;
-            dps[parseInt(/*$[[{iter.index}"]]*/)].push({
-                x : xValue,
-                y : yValue,
-                indexLabel : indexLabel
-            });
-	    /*[/]*/
-	/*[/]*/
-/*]]>*/
+var dataPointsList = /*[[${dataPointsList}]]*/ 'null';
 
-chart.render();
-}
+            count = 0;
+            for (var i = 0; i < dataPointsList.length; i++) {
+                var dataPoints = dataPointsList[i];
+                for (var j = 0; j < dataPoints.length; j++) {
+                    dps[count++] = {
+                        x: dataPoints[j].x,
+                        y: dataPoints[j].y
+                    };
+                }
+            }
+            chart.render();
+        }
+        /*]]>*/
+
 </script>
 </head>
 <body>
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="canvasjs.min.js"></script>
 </body>
 </html>
