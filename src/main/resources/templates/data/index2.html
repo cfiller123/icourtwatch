@@ -22,6 +22,8 @@ var xValue;
 var yValue;
 var indexLabel;
 
+/THMYELEAF CODE BELOW
+
 /*<![CDATA[*/
     /*[# th:each="dataPoints, iter : ${dataPointsList"}"]*/
         /*[# th:each="dataPoint : ${dataPoints}"}"]*/
@@ -37,12 +39,25 @@ var indexLabel;
 	/*[/]*/
 /*]]>*/
 
+	//ORIGINAL CODE BELOW
+<c:forEach items="${dataPointsList}" var="dataPoints" varStatus="loop">
+	<c:forEach items="${dataPoints}" var="dataPoint">
+		xValue = parseInt("${dataPoint.x}");
+		yValue = parseFloat("${dataPoint.y}");
+		indexLabel = "${dataPoint.indexLabel}";
+		dps[parseInt("${loop.index}")].push({
+			x : xValue,
+			y : yValue,
+			indexLabel : indexLabel
+		});
+	</c:forEach>
+</c:forEach>
 chart.render();
 }
 </script>
 </head>
 <body>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="canvasjs.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
