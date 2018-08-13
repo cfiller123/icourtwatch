@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta charset="UTF-8"/>
-    <script type="/text/javascript">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <script type="text/javascript">
 window.onload = function() {
 var dps = [[]];
 var chart = new CanvasJS.Chart("chartContainer", {
@@ -44,9 +43,8 @@ chart.render();
 </head>
 <body>
 <h1 th:text="${title}">Default Title</h1>
-
 <nav th:replace="fragments :: navigation"></nav>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="canvasjs.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
