@@ -5,8 +5,9 @@ import java.util.Map;
 
 import com.carlfiller.icourtwatch.models.data.CanvasjsChartDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service("CanvasjsChartService")
 public class CanvasjsChartServiceImpl implements CanvasjsChartService {
 
     @Autowired
