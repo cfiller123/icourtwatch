@@ -13,13 +13,13 @@
 
 <form method="post" id="editForm" style="max-width:600px;" action="/judge/viewwatch" th:object="${judge}" onsubmit="return confirm('Do you want to edit?');">
     <div class="form-group">
-        <label th:for="name">Name</label>
-        <input class="form-control" th:field="*{name}"/>
+        <label th:for="name">Judge Name</label>
+        <input class="form-control" th:field="*{name}" />
         <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="court">Court Number</label>
-        <input class="form-control" th:field="*{court}"/>
+        <input class="form-control" th:field="*{court}" />
         <span th:errors="*{court}" class="error"></span>
     </div>
     <div class="form-group">
@@ -29,20 +29,60 @@
     </div>
     <div class="form-group">
         <label th:for="defendant">Defendant</label>
-        <input class="form-control" th:field="*{defendant}"/>
+        <input class="form-control" th:field="*{defendant}" />
         <span th:errors="*{defendant}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="type">Type</label>
+        <label th:for="disposition">Case Disposition</label>
         <select th:field="*{disposition}">
             <option th:each="disposition : ${dispositions}"
                     th:text="${disposition.name}"
                     th:value="${disposition}"></option>
         </select>
     </div>
+    <div class="form-group">
+        <label th:for="audability">Audability (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{audability}" />
+        <span th:errors="*{audability}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="eyeContact">Eye Contact (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{eyeContact}" />
+        <span th:errors="*{eyeContact}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="explainCharges">Explanation of Charges (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{explainCharges}" />
+        <span th:errors="*{explainCharges}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="caseDetails">Case Details (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{caseDetails}" />
+        <span th:errors="*{caseDetails}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="listeningSkills">Listening Skills (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{listeningSkills}" />
+        <span th:errors="*{listeningSkills}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="courtProceedings">Court Proceedings (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{courtProceedings}" />
+        <span th:errors="*{courtProceedings}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="voiceTone">Voice Tone (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{voiceTone}" />
+        <span th:errors="*{voiceTone}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="timeMgmt">Time Management (1 - 5; 1 being lowest)</label>
+        <input class="form-control" th:field="*{timeMgmt}" />
+        <span th:errors="*{timeMgmt}" class="error"></span>
+    </div>
     <input type="hidden" th:value="${judge.id}" name="judgeId" />
     <input type="submit" value="Edit Watch"/>
 </form>
-
+<br/>
 </body>
 </html>

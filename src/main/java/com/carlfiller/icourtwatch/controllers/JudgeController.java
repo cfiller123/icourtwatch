@@ -87,10 +87,7 @@ public class JudgeController extends AbstractController {
 
     @RequestMapping(value = "removewatch", method = RequestMethod.POST)
     public String processRemoveWatch(@ModelAttribute Judge judge, Model model, int judgeId) {
-        // TODO: Flash message warning user that they're about to delete a judge
-
         judgeDao.delete(judgeId);
-
         return "redirect:/judge/index";
     }
 

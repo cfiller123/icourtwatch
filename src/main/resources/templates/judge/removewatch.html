@@ -13,6 +13,15 @@
 <br/>Watch Date: <span th:text="${judge.date}"></span>
 <br/>Defendant: <span th:text="${judge.defendant}"></span>
 <br/>Disposition: <span th:text="${disposition}"></span>
+<br/>Audability: <span th:text="${judge.audability}"></span>
+<br/>Eye Contact: <span th:text="${judge.eyeContact}"></span>
+<br/>Explained Charges: <span th:text="${judge.explainCharges}"></span>
+<br/>Case Details: <span th:text="${judge.caseDetails}"></span>
+<br/>Listening Skills: <span th:text="${judge.listeningSkills}"></span>
+<br/>Court Proceedings: <span th:text="${judge.courtProceedings}"></span>
+<br/>Voice Tone: <span th:text="${judge.voiceTone}"></span>
+<br/>Time Management: <span th:text="${judge.timeMgmt}"></span>
+
 <form method="post" onsubmit="return confirm('Do you want to edit?');">
     <input type="hidden" th:value="${judge.id}" name="judgeId" />
     <input type="submit" value="Delete Watch" />
