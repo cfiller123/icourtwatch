@@ -2,15 +2,12 @@ package com.carlfiller.icourtwatch.models.data;
 
 import com.carlfiller.icourtwatch.models.Judge;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.persistence.EntityManager;
 import java.util.*;
 
 public class CanvasjsChartData {
 
     @Autowired
     protected JudgeDao judgeDao;
-
-    EntityManager em;
 
     public HashMap<String, OptionalDouble> getAudability() {
         List<Judge> judges = judgeDao.findAll();
@@ -29,6 +26,10 @@ public class CanvasjsChartData {
     static List<Map<Object,Object>> dataPoints1 = new ArrayList<Map<Object,Object>>();
 
     static {
+
+        //Need to loop over map with database data to add to list
+
+
         map = new HashMap<Object,Object>(); map.put("x", 10); map.put("y", 69);dataPoints1.add(map);
         map = new HashMap<Object,Object>(); map.put("x", 20); map.put("y", 48);dataPoints1.add(map);
         map = new HashMap<Object,Object>(); map.put("x", 30); map.put("y", 26); map.put("indexLabel", "Lowest");dataPoints1.add(map);
