@@ -3,6 +3,7 @@ package com.carlfiller.icourtwatch.controllers;
 import java.util.List;
 import java.util.Map;
 
+import com.carlfiller.icourtwatch.models.Judge;
 import com.carlfiller.icourtwatch.models.User;
 import com.carlfiller.icourtwatch.models.service.CanvasjsChartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class DataController extends AbstractController{
 
     @RequestMapping(value="highchart",method = RequestMethod.GET)
     public String highchart(Model model) {
+        model.addAttribute("chartTitle","Test");
+        model.addAttribute("chartScale","Scale from 1-5 with 1 being the lowest");
+        model.addAttribute("chartMetric","Eye Contact");
         return "data/highchart";
     }
 
