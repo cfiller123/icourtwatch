@@ -41,4 +41,9 @@ public class DataController extends AbstractController{
         return "data/index";
     }
 
+    @RequestMapping(value="highchart",method = RequestMethod.GET)
+    public String highchart(Model model) {
+        return "data/highchart";
+    }
+
 }
