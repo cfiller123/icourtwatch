@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+
+</head>
+
+<body class="container">
+
+<h1 th:text="'Edit ' + ${judge.name}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" id="editForm" style="max-width:600px;" action="/judge/viewwatch" th:object="${judge}" onsubmit="return confirm('Do you want to edit?');">
+    <div class="form-group">
+        <label th:for="name">Judge Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="court">Court Number</label>
+        <input class="form-control" th:field="*{court}" />
+        <span th:errors="*{court}" class="error"></span>
+    </div>
+    <input type="hidden" th:value="${judge.id}" name="judgeId" />
+    <input type="submit" value="Edit Watch"/>
+</form>
+<br/>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br/>Judge Name: <span th:text="${judge.name}"></span>
+<br/>Court Number: <span th:text="${judge.court}"></span>
+<br/>Watch Date: <span th:text="${watch.date}"></span>
+<br/>Defendant: <span th:text="${watch.defendant}"></span>
+<br/>Disposition: <span th:text="${disposition}"></span>
+<br/>Audability: <span th:text="${watch.audability}"></span>
+<br/>Eye Contact: <span th:text="${watch.eyeContact}"></span>
+<br/>Explained Charges: <span th:text="${watch.explainCharges}"></span>
+<br/>Case Details: <span th:text="${watch.caseDetails}"></span>
+<br/>Listening Skills: <span th:text="${watch.listeningSkills}"></span>
+<br/>Court Proceedings: <span th:text="${watch.courtProceedings}"></span>
+<br/>Voice Tone: <span th:text="${watch.voiceTone}"></span>
+<br/>Time Management: <span th:text="${watch.timeMgmt}"></span>
+
+<form method="post" onsubmit="return confirm('Do you want to delete this Watch?');">
+    <input type="hidden" th:value="${watch.id}" name="watchId" />
+    <input type="submit" value="Delete Watch" />
+</form>
+
+
+</body>
+</html>

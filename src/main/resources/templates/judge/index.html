@@ -12,27 +12,29 @@
 
 <br />
 <div th:unless="${judges}">
-    <h2>No Watches</h2>
+    <h2>No Judges</h2>
 </div>
 
     <div th:if="${judges}">
-        <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 4}">
+        <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 10}">
             <table>
                 <tr>
                     <th>Court Watch: &nbsp;</th>
-                    <td><a th:href="@{/judge/viewwatch(id=${judge.id})}" th:text="'Judge ' +${judge.name} + '\'s court on ' + ${judge.getFormattedStartDate()}"></a></td>
+                    <td><a th:href="@{/judge/editjudge(id=${judge.id})}" th:text="'Judge ' +${judge.name}"></a></td>
                 </tr>
                 <tr>
-                    <th><a th:href="@{/judge/removewatch(id=${judge.id})}" th:text="Delete"></a></th>
+                    <th><a th:href="@{/judge/removejudge(id=${judge.id})}" th:text="Delete"></a></th>
                 </tr>
             </table>
         </div>
     </div>
+    See <a href="/judges/all">all judges</a>.
+<!--TODO: Create all judges file and handler-->
 <br/>
 <br/>
 
 <div th:if="${judges}">
-    Example court watch data <a href="/judge/summary">here</a>.<br/>
+    Example court watch data <a href="/data/summary">here</a>.<br/>
     Example dashboard <a href="/data/index">here</a>.
 </div>
 

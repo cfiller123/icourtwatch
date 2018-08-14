@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br/>Judge Name: <span th:text="${judge.name}"></span>
+<br/>Court Number: <span th:text="${judge.court}"></span>
+
+<form method="post" onsubmit="return confirm('Do you want to delete this Judge?');">
+    <input type="hidden" th:value="${judge.id}" name="judgeId" />
+    <input type="submit" value="Delete Watch" />
+</form>
+
+
+</body>
+</html>

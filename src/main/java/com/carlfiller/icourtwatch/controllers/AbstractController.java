@@ -3,6 +3,7 @@ package com.carlfiller.icourtwatch.controllers;
 import com.carlfiller.icourtwatch.models.User;
 import com.carlfiller.icourtwatch.models.data.JudgeDao;
 import com.carlfiller.icourtwatch.models.data.UserDao;
+import com.carlfiller.icourtwatch.models.data.WatchDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -16,6 +17,9 @@ public abstract class AbstractController {
 
     @Autowired
     protected JudgeDao judgeDao;
+
+    @Autowired
+    protected WatchDao watchDao;
 
     public static final String userSessionKey = "user_id";
 

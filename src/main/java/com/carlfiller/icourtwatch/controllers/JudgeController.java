@@ -2,15 +2,12 @@ package com.carlfiller.icourtwatch.controllers;
 
 import com.carlfiller.icourtwatch.models.Disposition;
 import com.carlfiller.icourtwatch.models.Judge;
-import com.carlfiller.icourtwatch.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -18,88 +15,63 @@ import javax.validation.Valid;
 public class JudgeController extends AbstractController {
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String index(Model model, HttpServletRequest request){
-        User user = getUserFromSession(request.getSession());
-        int ownerId = user.getId();
-        model.addAttribute("title","Welcome to CourtWatch!");
-        model.addAttribute("judges", judgeDao.findByOwnerId(ownerId));
+    public String index(Model model){
+        model.addAttribute("title","Judge Dashboard");
+        model.addAttribute("judges", judgeDao.findAll());
         return "judge/index";
     }
 
-    @RequestMapping(value = "addwatch", method = RequestMethod.GET)
-    public String displayAddWatchForm(Model model) {
-
-        model.addAttribute("title","Add Your Court Watch");
+    @RequestMapping(value = "addjudge", method = RequestMethod.GET)
+    public String displayAddJudgeForm(Model model) {
+        model.addAttribute("title","Add Judge");
         model.addAttribute(new Judge());
-        model.addAttribute("dispositions",Disposition.values());
-        return "judge/addwatch";
+        return "judge/addjudge";
     }
 
-    @RequestMapping(value = "addwatch", method = RequestMethod.POST)
-    public String processAddWatchForm(@ModelAttribute @Valid Judge newJudge, Errors errors, Model model, HttpServletRequest request) {
-        User user = getUserFromSession(request.getSession());
-        int userId = user.getId();
+    @RequestMapping(value = "addjudge", method = RequestMethod.POST)
+    public String processAddJudgeForm(@ModelAttribute @Valid Judge newJudge, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title","Add Your Court Watch");
             model.addAttribute(new Judge());
             model.addAttribute("dispositions",Disposition.values());
-            return "judge/addwatch";
+            return "judge/addjudge";
         }
-        newJudge.setOwnerId(userId);
         judgeDao.save(newJudge);
         return "redirect:/judge/index";
     }
 
-    @RequestMapping(value = "viewwatch", method = RequestMethod.GET)
-    public String viewWatch(Model model, int id) {
+    @RequestMapping(value = "editjudge", method = RequestMethod.GET)
+    public String viewJudge(Model model, int id) {
         Judge foundJudge = judgeDao.findOne(id);
         model.addAttribute("judge", foundJudge);
-        model.addAttribute("dispositions", Disposition.values());
-        return "judge/viewwatch";
+        return "judge/editjudge";
     }
 
-    @RequestMapping(value = "viewwatch", method = RequestMethod.POST)
-    public String processViewWatch(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model, int judgeId) {
-
+    @RequestMapping(value = "editjudge", method = RequestMethod.POST)
+    public String processViewJudge(@ModelAttribute @Valid Judge updateJudge, Errors errors, Model model, int judgeId) {
         if (errors.hasErrors()) {
             return "redirect:";
-
         }
+
         Judge foundJudge = judgeDao.findOne(judgeId);
         foundJudge.setName(updateJudge.getName());
-        foundJudge.setDisposition(updateJudge.getDisposition());
         foundJudge.setCourt(updateJudge.getCourt());
-        foundJudge.setDate(updateJudge.getDate());
-        foundJudge.setDefendant(updateJudge.getDefendant());
         judgeDao.save(foundJudge);
         return "redirect:/judge/index";
     }
 
-    @RequestMapping(value = "removewatch", method = RequestMethod.GET)
-    public String viewRemoveWatch(Model model, int id) {
+    @RequestMapping(value = "removejudge", method = RequestMethod.GET)
+    public String viewRemoveJudge(Model model, int id) {
         Judge foundJudge = judgeDao.findOne(id);
         model.addAttribute("title","Delete Watch");
         model.addAttribute("judge", foundJudge);
-        model.addAttribute("disposition", foundJudge.getDisposition());
-
-        return "/judge/removewatch";
+        return "/judge/removejudge";
     }
 
-    @RequestMapping(value = "removewatch", method = RequestMethod.POST)
-    public String processRemoveWatch(@ModelAttribute Judge judge, Model model, int judgeId) {
+    @RequestMapping(value = "removejudge", method = RequestMethod.POST)
+    public String processRemovejudge(@ModelAttribute Judge judge, Model model, int judgeId) {
         judgeDao.delete(judgeId);
         return "redirect:/judge/index";
     }
 
-    @RequestMapping(value = "summary", method = RequestMethod.GET)
-    public String displaySummary(Model model, HttpServletRequest request) {
-        User user = getUserFromSession(request.getSession());
-        String name = user.getUsername();
-
-        model.addAttribute("title", "Summary Statistics");
-        model.addAttribute("watches",judgeDao.findAll().size());
-        model.addAttribute("yourname",name);
-
-        return "judge/summary";
-    }
 }

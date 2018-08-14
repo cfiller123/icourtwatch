@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+
+
+</head>
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 th:text="'Edit Watch (observed on ' + ${watch.getFormattedStartDate()} + ')'">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" style="max-width:600px;" th:object="${judge}">
+<form method="post" id="editForm" style="max-width:600px;" action="/watch/viewwatch" th:object="${watch}" onsubmit="return confirm('Do you want to edit?');">
     <div class="form-group">
-        <label th:for="name">Judge Name</label>
-        <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="court">Court Number</label>
-        <input class="form-control" th:field="*{court}" />
-        <span th:errors="*{court}" class="error"></span>
+        <label th:for="judge">Judge</label>
+        <select name="judgeId">
+            <option th:each="judge : ${judges}"
+                    th:text="${judge.name}"
+                    th:value="${judge.id}"></option>
+        </select>
+        <!--TODO: Make sure the text is the previously entered judge-->
     </div>
     <div class="form-group">
         <label th:for="date">Watch Date</label>
@@ -77,9 +79,9 @@
         <input class="form-control" th:field="*{timeMgmt}" />
         <span th:errors="*{timeMgmt}" class="error"></span>
     </div>
-    <input type="submit" value="Add Watch" />
+    <input type="hidden" th:value="${watch.id}" name="watchId" />
+    <input type="submit" value="Edit Watch"/>
 </form>
-
-
+<br/>
 </body>
 </html>

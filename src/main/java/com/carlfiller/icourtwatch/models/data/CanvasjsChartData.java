@@ -8,18 +8,18 @@ public class CanvasjsChartData {
 
     @Autowired
     protected JudgeDao judgeDao;
-
-    public HashMap<String, OptionalDouble> getAudability() {
-        List<Judge> judges = judgeDao.findAll();
-        HashMap<String,OptionalDouble> audabilityMap = new HashMap<String,OptionalDouble>();
-        for (Judge j : judges) {
-            OptionalDouble audability = judges.stream().filter(s -> s.getName() == j.getName()).mapToDouble(s -> s.getAudability()).average();
-            audabilityMap.put(j.getName(),audability);
-        }
-
-        return audabilityMap;
-
-    }
+//
+//    public HashMap<String, OptionalDouble> getAudability() {
+//        List<Judge> judges = judgeDao.findAll();
+//        HashMap<String,OptionalDouble> audabilityMap = new HashMap<String,OptionalDouble>();
+//        for (Judge j : judges) {
+//            OptionalDouble audability = judges.stream().filter(s -> s.getName() == j.getName()).mapToDouble(s -> s.getAudability()).average();
+//            audabilityMap.put(j.getName(),audability);
+//        }
+//
+//        return audabilityMap;
+//
+//    }
 
     static Map<Object,Object> map = null;
     static List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
