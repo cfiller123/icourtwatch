@@ -21,7 +21,7 @@ public class DataController extends AbstractController{
     @Autowired
     private CanvasjsChartService canvasjsChartService;
 
-    @RequestMapping(value = "summary", method = RequestMethod.GET)
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public String displaySummary(Model model, HttpServletRequest request) {
         User user = getUserFromSession(request.getSession());
         String name = user.getUsername();
@@ -30,15 +30,15 @@ public class DataController extends AbstractController{
         model.addAttribute("watches",watchDao.findAll().size());
         model.addAttribute("yourname",name);
 
-        return "data/summary";
+        return "data/index";
     }
 
-    @RequestMapping(value="index", method = RequestMethod.GET)
+    @RequestMapping(value="canvasjs", method = RequestMethod.GET)
     public String springMVC(ModelMap modelmap) {
         List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
         modelmap.addAttribute("dataPointsList", canvasjsDataList);
         modelmap.addAttribute("title","Dashboard");
-        return "data/index";
+        return "data/canvasjs";
     }
 
     @RequestMapping(value="highchart",method = RequestMethod.GET)
