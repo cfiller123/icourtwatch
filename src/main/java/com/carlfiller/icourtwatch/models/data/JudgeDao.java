@@ -22,4 +22,6 @@ public interface JudgeDao extends CrudRepository<Judge, Integer> {
     List<Judge> findAll();
 
     List<Judge> findByOwnerId(int ownerId);
+
+    List<String> findName();
 }

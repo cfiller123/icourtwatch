@@ -1,11 +1,33 @@
 package com.carlfiller.icourtwatch.models.data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.carlfiller.icourtwatch.models.Judge;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CanvasjsChartData {
+
+    @Autowired
+    protected JudgeDao judgeDao;
+
+    EntityManager em;
+
+    public HashMap<String, OptionalDouble> getAudability() {
+        List<Judge> judges = judgeDao.findAll();
+        HashMap<String,OptionalDouble> audabilityMap = new HashMap<String,OptionalDouble>();
+        for (Judge j : judges) {
+            OptionalDouble audability = judges.stream().filter(s -> s.getName() == j.getName()).mapToDouble(s -> s.getAudability()).average();
+            audabilityMap.put(j.getName(),audability);
+        }
+
+        return audabilityMap;
+
+    }
 
     static Map<Object,Object> map = null;
     static List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
