@@ -16,9 +16,9 @@
 </div>
 
 <div th:if="${watches}">
-    <br/><span th:text="'There have been ' + ${watches.size()} + ' watches. Below are last five:'"/>
+    <br/><span th:text="'There have been ' + ${watches.size()} + ' watches.'"/>
     <br/><br/>
-    <div  th:each="watch : ${watches}" th:unless="${watchStat.index > 4}">
+    <div  th:each="watch : ${watches}">
         <table>
             <tr>
                 <td><a th:href="@{/watch/editwatch(id=${watch.id})}" th:text="'Watch on ' + ${watch.getFormattedStartDate()}"></a></td>
@@ -26,9 +26,6 @@
             </tr>
         </table>
     </div>
-
-    <br/>
-    <p>See all watches <a href="/watch/all">here</a>.</p>
 </div>
 <br/>
 <br/>

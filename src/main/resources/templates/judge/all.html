@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <title th:text="${title}">Court Watch</title>
+</head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br />
+<div th:unless="${judges}">
+    <h2>No Judges</h2>
+</div>
+
+<div th:if="${judges}">
+    <br/><span th:text="'There are ' + ${judges.size()} + ' judges.'"/>
+    <br/><br/>
+    <div  th:each="judge : ${judges}">
+        <table>
+            <tr>
+                <td><a th:href="@{/judge/editjudge(id=${judge.id})}" th:text="'Judge ' +${judge.name}"></a></td>
+                <th>&emsp;<a th:href="@{/judge/removejudge(id=${judge.id})}" th:text="Delete"></a></th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br/>
+
+<div th:if="${judges}">
+    See statistics and charts <a href="/data/index">here</a>.<br/>
+</div>
+
+
+</body>
+</html>

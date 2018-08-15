@@ -28,6 +28,15 @@ public class WatchController extends AbstractController{
         return "watch/index";
     }
 
+    @RequestMapping(value = "all", method = RequestMethod.GET)
+    public String indexAll(Model model, HttpServletRequest request){
+        User user = getUserFromSession(request.getSession());
+        int ownerId = user.getId();
+        model.addAttribute("title","Watch Dashboard");
+        model.addAttribute("watches", watchDao.findByOwnerId(ownerId));
+        return "watch/all";
+    }
+
     @RequestMapping(value = "addwatch", method = RequestMethod.GET)
     public String displayAddWatchForm(Model model) {
 

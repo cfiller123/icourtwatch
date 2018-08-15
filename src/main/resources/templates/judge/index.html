@@ -16,7 +16,7 @@
 </div>
 
     <div th:if="${judges}">
-        <br/><span th:text="'Last ' + ${judges.size()} + ' judges:'"/>
+        <br/><span th:text="'There are ' + ${judges.size()} + ' judges. These are the last 5:'"/>
         <br/><br/>
         <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 10}">
             <table>
@@ -27,8 +27,7 @@
             </table>
         </div>
     </div>
-    <br/>See <a href="/judges/all">all judges</a>.
-<!--TODO: Create all judges file and handler-->
+    <br/>See <a href="/judge/all">all </a>judges.
 <br/>
 <br/>
 

@@ -7,7 +7,7 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
-
+<br/>
 <form method="post" style="max-width:600px;" th:object="${watch}">
     <div class="form-group">
         <label th:for="judge">Judge</label>
@@ -35,45 +35,125 @@
                     th:value="${disposition}"></option>
         </select>
     </div>
-    <div class="form-group">
+    <div class="Form-group">
         <label th:for="audability">Audability (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{audability}" />
-        <span th:errors="*{audability}" class="error"></span>
+        <select name="audability">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
+    <div class="Form-group">
         <label th:for="eyeContact">Eye Contact (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{eyeContact}" />
-        <span th:errors="*{eyeContact}" class="error"></span>
+        <select name="eyeContact">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
-        <label th:for="explainCharges">Explanation of Charges (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{explainCharges}" />
-        <span th:errors="*{explainCharges}" class="error"></span>
+    <div class="Form-group">
+        <label th:for="explainCharges">Explains Charges (1 - 5; 1 being lowest)</label>
+        <select name="explainCharges">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
-        <label th:for="caseDetails">Case Details (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{caseDetails}" />
-        <span th:errors="*{caseDetails}" class="error"></span>
+    <div class="Form-group">
+        <label th:for="caseDetails">Gives Case Details (1 - 5; 1 being lowest)</label>
+        <select name="caseDetails">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
+    <div class="Form-group">
         <label th:for="listeningSkills">Listening Skills (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{listeningSkills}" />
-        <span th:errors="*{listeningSkills}" class="error"></span>
+        <select name="listeningSkills">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
-        <label th:for="courtProceedings">Court Proceedings (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{courtProceedings}" />
-        <span th:errors="*{courtProceedings}" class="error"></span>
+    <div class="Form-group">
+        <label th:for="courtProceedings">Court Proceeds Well (1 - 5; 1 being lowest)</label>
+        <select name="courtProceedings">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
-        <label th:for="voiceTone">Voice Tone (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{voiceTone}" />
-        <span th:errors="*{voiceTone}" class="error"></span>
+    <div class="Form-group">
+        <label th:for="voiceTone">Voice and Tone (1 - 5; 1 being lowest)</label>
+        <select name="voiceTone">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
-    <div class="form-group">
+    <div class="Form-group">
         <label th:for="timeMgmt">Time Management (1 - 5; 1 being lowest)</label>
-        <input class="form-control" th:field="*{timeMgmt}" />
-        <span th:errors="*{timeMgmt}" class="error"></span>
+        <select name="timeMgmt">
+            <option th:text="1"
+                    th:value="1"></option>
+            <option th:text="2"
+                    th:value="2"></option>
+            <option th:text="3"
+                    th:value="3"></option>
+            <option th:text="4"
+                    th:value="4"></option>
+            <option th:text="5"
+                    th:value="5"></option>
+        </select>
     </div>
     <input type="submit" value="Add Watch" />
 </form>

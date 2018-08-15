@@ -21,6 +21,13 @@ public class JudgeController extends AbstractController {
         return "judge/index";
     }
 
+    @RequestMapping(value = "all", method = RequestMethod.GET)
+    public String indexAll(Model model){
+        model.addAttribute("title","Judge Dashboard");
+        model.addAttribute("judges", judgeDao.findAll());
+        return "judge/all";
+    }
+
     @RequestMapping(value = "addjudge", method = RequestMethod.GET)
     public String displayAddJudgeForm(Model model) {
         model.addAttribute("title","Add Judge");
