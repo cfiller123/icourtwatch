@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
+<head th:replace="fragments :: head">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 </head>
-<body>
+<body class="container">
 <h1 th:text="${title}">Default Title</h1>
+
 <nav th:replace="fragments :: navigation"></nav>
+
+<br/>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -23,7 +26,7 @@ title: {
 text: /*[[${chartTitle}]]*/
 },
 xAxis: {
-categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+categories: ['Audability', 'Case Details', 'Court Proceedings', 'Explains Charges', 'Eye Contact', 'Listening Skills', 'Time Management', 'Voice & Tone'],
 title: {
 text: null
 }
@@ -64,7 +67,7 @@ enabled: false
 },
 series: [{
 name: /*[[${chartMetric}]]*/,
-data: [107, 31, 635, 203, 2]
+data: /*[[${data}]]*/
 }]
 });
 /*]]>*/

@@ -9,18 +9,18 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <br />
-<div th:unless="${watches}">
-    <h2>No Watches</h2>
+<div th:unless="${judges}">
+    <h2>No Data Yet</h2>
+</div>
+
+<div th:if="${judges}">
+    <p>Click on the judge's name to see summary of judge's court watches.</p>
+    <ul  th:each="judge : ${judges}">
+                <li><a th:href="@{/data/highchart(id=${judge.id})}" th:text="'Judge ' +${judge.name}"></a></li>
+    </ul>
 </div>
 
 <p>There have been <span th:text="${watches}"/> court watches to date.</p>
-<br/>
-<p>Your name is: <span th:text="${yourname}"></span>.</p>
-<br/>
-<p>See the canvasjs chart <a href="canvasjs">here</a>.</p>
-<br/>
-<p>See the highchart <a href="highchart">here</a>.</p>
-
 
 
 </body>
