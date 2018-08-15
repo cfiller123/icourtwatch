@@ -3,16 +3,11 @@ package com.carlfiller.icourtwatch.controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-
 import com.carlfiller.icourtwatch.models.Judge;
 import com.carlfiller.icourtwatch.models.User;
 import com.carlfiller.icourtwatch.models.Watch;
-import com.carlfiller.icourtwatch.models.service.CanvasjsChartService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,11 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("data")
 public class DataController extends AbstractController{
 
-    @Autowired
-    private CanvasjsChartService canvasjsChartService;
-
     public List<Integer> getAverages(Judge foundJudge) {
-        List<Watch> watches = watchDao.findByJudge(foundJudge);
+        List<Watch> watches = watchDao.findByJudge(foundJudge); //TODO: Fix when judge has no watches (e.g., / zero)
         int audability = 0;
         int caseDetails = 0;
         int courtProceedings = 0;
@@ -57,9 +49,6 @@ public class DataController extends AbstractController{
         data.addAll(Arrays.asList(audability,caseDetails,courtProceedings,explainCharges, eyeContact,listeningSkills
         , timeMgmt, voiceTone));
         return data;
-//        return String.valueOf(audability) + ", " + String.valueOf(caseDetails) + ", " + String.valueOf(courtProceedings)
-//                + ", " + String.valueOf(explainCharges) + ", " + String.valueOf(eyeContact) + ", " + String.valueOf(listeningSkills)
-//                + ", " + String.valueOf(timeMgmt) + ", " + String.valueOf(voiceTone);
     }
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
@@ -73,14 +62,6 @@ public class DataController extends AbstractController{
         model.addAttribute("yourname",name);
 
         return "data/index";
-    }
-
-    @RequestMapping(value="canvasjs", method = RequestMethod.GET)
-    public String springMVC(ModelMap modelmap) {
-        List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
-        modelmap.addAttribute("dataPointsList", canvasjsDataList);
-        modelmap.addAttribute("title","Dashboard");
-        return "data/canvasjs";
     }
 
     @RequestMapping(value="highchart",method = RequestMethod.GET)
