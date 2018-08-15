@@ -42,7 +42,7 @@ overflow: 'justify'
 }
 },
 tooltip: {
-valueSuffix: ' millions'
+valueSuffix: ' '
 },
 plotOptions: {
 bar: {
@@ -52,6 +52,7 @@ enabled: true
 }
 },
 legend: {
+enabled: false,
 layout: 'vertical',
 align: 'right',
 verticalAlign: 'top',
@@ -66,7 +67,7 @@ credits: {
 enabled: false
 },
 series: [{
-name: /*[[${chartMetric}]]*/,
+name: /*[[${chartTitle}]]*/,
 data: /*[[${data}]]*/
 }]
 });
