@@ -16,14 +16,13 @@
 </div>
 
 <div th:if="${watches}">
+    <br/><span th:text="'Last ' + ${watches.size()} + ' watches:'"/>
+    <br/><br/>
     <div  th:each="watch : ${watches}" th:unless="${watchStat.index > 5}">
         <table>
             <tr>
-                <th>Watches: &nbsp;</th>
                 <td><a th:href="@{/watch/editwatch(id=${watch.id})}" th:text="'Watch on ' + ${watch.getFormattedStartDate()}"></a></td>
-            </tr>
-            <tr>
-                <th><a th:href="@{/watch/editwatch(id=${watch.id})}" th:text="Delete"></a></th>
+                <th>&emsp;<a th:href="@{/watch/removewatch(id=${watch.id})}" th:text="Delete"></a></th>
             </tr>
         </table>
     </div>

@@ -16,19 +16,18 @@
 </div>
 
     <div th:if="${judges}">
+        <br/><span th:text="'Last ' + ${judges.size()} + ' judges:'"/>
+        <br/><br/>
         <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 10}">
             <table>
                 <tr>
-                    <th>Court Watch: &nbsp;</th>
                     <td><a th:href="@{/judge/editjudge(id=${judge.id})}" th:text="'Judge ' +${judge.name}"></a></td>
-                </tr>
-                <tr>
-                    <th><a th:href="@{/judge/removejudge(id=${judge.id})}" th:text="Delete"></a></th>
+                    <th>&emsp;<a th:href="@{/judge/removejudge(id=${judge.id})}" th:text="Delete"></a></th>
                 </tr>
             </table>
         </div>
     </div>
-    See <a href="/judges/all">all judges</a>.
+    <br/>See <a href="/judges/all">all judges</a>.
 <!--TODO: Create all judges file and handler-->
 <br/>
 <br/>
