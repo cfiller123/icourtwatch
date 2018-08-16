@@ -13,6 +13,10 @@
     <h2>No Data Yet</h2>
 </div>
 
+<div th:if="${zeroDivision}">
+    <h2>That judge has no watches</h2>
+</div>
+
 <div th:if="${judges}">
     <p>Click on the judge's name to see summary of judge's court watches.</p>
     <ul  th:each="judge : ${judges}">

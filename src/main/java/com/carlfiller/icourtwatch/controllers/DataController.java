@@ -37,18 +37,25 @@ public class DataController extends AbstractController{
             timeMgmt = timeMgmt + w.getTimeMgmt();
             voiceTone = voiceTone + w.getVoiceTone();
         }
-        audability = audability/watches.size();
-        caseDetails = caseDetails/watches.size();
-        courtProceedings = courtProceedings/watches.size();
-        explainCharges = explainCharges/watches.size();
-        eyeContact = eyeContact/watches.size();
-        listeningSkills = listeningSkills/watches.size();
-        timeMgmt = timeMgmt/watches.size();
-        voiceTone = voiceTone/watches.size();
         List<Integer> data = new ArrayList<>();
-        data.addAll(Arrays.asList(audability,caseDetails,courtProceedings,explainCharges, eyeContact,listeningSkills
-        , timeMgmt, voiceTone));
-        return data;
+        if (audability == 0 || caseDetails == 0 || courtProceedings == 0 || explainCharges == 0
+                || eyeContact ==0 || listeningSkills == 0 || timeMgmt == 0 || voiceTone ==0) {
+            data.add(999);
+            return data;
+        }
+        else {
+            audability = audability / watches.size();
+            caseDetails = caseDetails / watches.size();
+            courtProceedings = courtProceedings / watches.size();
+            explainCharges = explainCharges / watches.size();
+            eyeContact = eyeContact / watches.size();
+            listeningSkills = listeningSkills / watches.size();
+            timeMgmt = timeMgmt / watches.size();
+            voiceTone = voiceTone / watches.size();
+            data.addAll(Arrays.asList(audability, caseDetails, courtProceedings, explainCharges, eyeContact, listeningSkills
+                    , timeMgmt, voiceTone));
+            return data;
+        }
     }
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
@@ -65,14 +72,27 @@ public class DataController extends AbstractController{
     }
 
     @RequestMapping(value="highchart",method = RequestMethod.GET)
-    public String highchart(Model model, int id) {
+    public String highchart(Model model, int id, HttpServletRequest request) {
         Judge foundjudge = judgeDao.findOne(id);
-        model.addAttribute("title","Summary Statistics");
-        model.addAttribute("chartTitle",foundjudge.getName() + "'s Results");
-        model.addAttribute("chartScale","Scale from 1-5 with 1 being the lowest");
-        model.addAttribute("data",getAverages(foundjudge)); //need to pass as integers not string
-        model.addAttribute("chartMetric","Eye Contact");
-        return "data/highchart";
-    }
+            List data = getAverages(foundjudge);
+            if (data.contains(999)) {
+                User user = getUserFromSession(request.getSession());
+                String name = user.getUsername();
+                model.addAttribute("zeroDivision","That judge has no watches");
+                model.addAttribute("title", "Summary Statistics");
+                model.addAttribute("watches",watchDao.findAll().size());
+                model.addAttribute("judges",judgeDao.findAll());
+                model.addAttribute("yourname",name);
+                return "data/index";
+            }
+            else {
+                model.addAttribute("title", "Summary Statistics");
+                model.addAttribute("chartTitle", foundjudge.getName() + "'s Results");
+                model.addAttribute("chartScale", "Scale from 1-5 with 1 being the lowest");
+                model.addAttribute("data", getAverages(foundjudge)); //need to pass as integers not string
+                model.addAttribute("chartMetric", "Eye Contact");
+                return "data/highchart";
+            }
+        }
 
-}
+    }
