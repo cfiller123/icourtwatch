@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DataController extends AbstractController{
 
     public List<Integer> getAverages(Judge foundJudge) {
-        List<Watch> watches = watchDao.findByJudge(foundJudge); //TODO: Fix when judge has no watches (e.g., / zero)
+        List<Watch> watches = watchDao.findByJudge(foundJudge);
         int audability = 0;
         int caseDetails = 0;
         int courtProceedings = 0;

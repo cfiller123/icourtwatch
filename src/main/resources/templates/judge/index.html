@@ -16,7 +16,7 @@
 </div>
 
     <div th:if="${judges}">
-        <br/><span th:text="'There are ' + ${judges.size()} + ' judges. These are the last 5:'"/>
+        <br/><span th:text="'There are ' + ${judges.size()} + ' judges. These are the last five:'"/>
         <br/><br/>
         <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 10}">
             <table>
@@ -30,10 +30,6 @@
     <br/>See <a href="/judge/all">all </a>judges.
 <br/>
 <br/>
-
-<div th:if="${judges}">
-    See statistics and charts <a href="/data/index">here</a>.<br/>
-</div>
 
 
 </body>
