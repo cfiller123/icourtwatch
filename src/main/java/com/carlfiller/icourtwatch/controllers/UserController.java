@@ -19,7 +19,34 @@ public class UserController extends AbstractController {
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model) {
         model.addAttribute("title", "Welcome to CourtWatch!");
+        model.addAttribute(new LoginForm());
         return "user/index";
+    }
+
+    @RequestMapping(value = "index", method = RequestMethod.POST)
+    public String loginProcess(@ModelAttribute @Valid LoginForm form, Errors errors,
+                               HttpServletRequest request) {
+
+        if (errors.hasErrors()) {
+            return "user/login";
+        }
+
+        User theUser = userDao.findByUsername(form.getUsername());
+        String password = form.getPassword();
+
+        if (theUser == null) {
+            errors.rejectValue("username", "user.invalid", "The given username does not exist");
+            return "login";
+        }
+
+        if (!theUser.isMatchingPassword(password)) {
+            errors.rejectValue("password", "password.invalid", "Invalid password");
+            return "login";
+        }
+
+        setUserInSession(request.getSession(), theUser);
+        return "redirect:/judge/index";
+
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.GET)
@@ -47,37 +74,6 @@ public class UserController extends AbstractController {
         User newUser = new User(form.getUsername(), form.getPassword());
         userDao.save(newUser);
         setUserInSession(request.getSession(), newUser);
-        return "redirect:/judge/index";
-    }
-
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login (Model model) {
-        model.addAttribute(new LoginForm());
-        model.addAttribute("title", "Log In");
-        return "user/login";
-    }
-
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login (@ModelAttribute @Valid LoginForm form, Errors errors, HttpServletRequest request) {
-
-        if (errors.hasErrors()) {
-            return "user/login";
-        }
-
-        User theUser = userDao.findByUsername(form.getUsername());
-        String password = form.getPassword();
-
-        if (theUser == null) {
-            errors.rejectValue("username", "user.invalid", "The given username does not exist");
-            return "login";
-        }
-
-        if (!theUser.isMatchingPassword(password)) {
-            errors.rejectValue("password", "password.invalid", "Invalid password");
-            return "login";
-        }
-
-        setUserInSession(request.getSession(), theUser);
         return "redirect:/judge/index";
     }
 

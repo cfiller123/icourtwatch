@@ -9,16 +9,30 @@
 
 
 <p>
-    Court Watch is a website for organizations looking to monitor their local judges to provide accountability
-    and feedback to the court in order to improve court processes, particularly for underrepresented and
-    vulnerable groups.
+    CourtWatch supports community-based organizations looking to monitor their local judges to provide
+    accountability and feedback to the court in order to improve court processes, particularly for
+    underrepresented and vulnerable groups. Individuals can enter and save data and see basic analyses
+    and graphs of their watches broken down by judge.
 </p>
+<h4>Please Sign In</h4>
+<form method="post" style="width:600px;" th:object="${loginForm}">
+    <div class="form-group">
+        <label th:for="username">Username</label>
+        <input class="form-control" th:field="*{username}" />
+        <div class="error" th:errors="*{username}"></div>
+    </div>
+    <div class="form-group">
+        <label th:for="password">Password</label>
+        <input class="form-control" th:field="*{password}" type="password" />
+        <div class="error" th:errors="*{password}"></div>
+    </div>
+
+    <input type="submit" value="Log In" />
+</form>
 
 <br/>
 If you are a new user, please <a href="/user/signup">sign up</a> to create your account.
-<br/>--------------------------<br/>
-If you are an existing user, please <a href="/user/login">log in</a> to access your information.
-<br/>--------------------------<br/>
+<br/>
 If you have any questions, please do not hesitate to reach out to <a href="mailto:carlfiller@gmail.com">me</a>.
 
 </body>

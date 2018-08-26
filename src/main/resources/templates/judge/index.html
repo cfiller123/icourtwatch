@@ -18,7 +18,7 @@
     <div th:if="${judges}">
         <br/><span th:text="'There are ' + ${judges.size()} + ' judges. These are the last five:'"/>
         <br/><br/>
-        <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 10}">
+        <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 4}">
             <table>
                 <tr>
                     <td><a th:href="@{/judge/editjudge(id=${judge.id})}" th:text="'Judge ' +${judge.name}"></a></td>
@@ -31,6 +31,7 @@
 <br/>
 <br/>
 
+<div th:replace="fragments :: scripts"></div>
 
 </body>
 </html>
