@@ -89,7 +89,7 @@ public class DataController extends AbstractController{
                 model.addAttribute("title", "Summary Statistics");
                 model.addAttribute("chartTitle", foundjudge.getName() + "'s Results");
                 model.addAttribute("chartScale", "Scale from 1-5 with 1 being the lowest");
-                model.addAttribute("data", getAverages(foundjudge)); //need to pass as integers not string
+                model.addAttribute("data", getAverages(foundjudge));
                 model.addAttribute("chartMetric", "Eye Contact");
                 return "data/highchart";
             }
