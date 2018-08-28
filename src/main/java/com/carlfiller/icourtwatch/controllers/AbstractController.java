@@ -6,7 +6,6 @@ import com.carlfiller.icourtwatch.models.data.UserDao;
 import com.carlfiller.icourtwatch.models.data.WatchDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
