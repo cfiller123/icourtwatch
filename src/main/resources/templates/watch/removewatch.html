@@ -10,7 +10,7 @@
 
 <br/>Judge Name: <span th:text="${judge.name}"></span>
 <br/>Court Number: <span th:text="${judge.court}"></span>
-<br/>Watch Date: <span th:text="${watch.date}"></span>
+<br/>Watch Date: <span th:text="${watch.getFormattedStartDate()}"></span>
 <br/>Defendant: <span th:text="${watch.defendant}"></span>
 <br/>Disposition: <span th:text="${disposition}"></span>
 <br/>Audability: <span th:text="${watch.audability}"></span>
