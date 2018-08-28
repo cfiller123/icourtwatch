@@ -106,7 +106,7 @@ public class WatchController extends AbstractController{
         model.addAttribute("disposition", foundWatch.getDisposition());
         model.addAttribute("judge",judgeDao.findOne(foundWatch.getJudge().getId()));
 
-        return "/watch/removewatch";
+        return "watch/removewatch";
     }
 
     @RequestMapping(value = "removewatch", method = RequestMethod.POST)
