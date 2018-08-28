@@ -17,9 +17,9 @@
         <select name="judgeId">
             <option th:each="judge : ${judges}"
                     th:text="${judge.name}"
-                    th:value="${judge.id}"></option>
+                    th:value="${judge.id}"
+                    th:selected="${watch.getJudge().name == judge.name}"></option>
         </select>
-        <!--TODO: Make sure the text is the previously entered judge-->
     </div>
     <div class="form-group">
         <label th:for="date">Watch Date</label>
