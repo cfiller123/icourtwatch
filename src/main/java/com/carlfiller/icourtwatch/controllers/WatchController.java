@@ -21,19 +21,31 @@ public class WatchController extends AbstractController{
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model, HttpServletRequest request){
         User user = getUserFromSession(request.getSession());
-        int ownerId = user.getId();
-        model.addAttribute("title","Watch Dashboard");
-        model.addAttribute("watches", watchDao.findByOwnerId(ownerId));
-        return "watch/index";
+        if (user.getManager() == 0) {
+            int ownerId = user.getId();
+            model.addAttribute("title", user.getUsername() + "'s " + "Watch Dashboard");
+            model.addAttribute("watches", watchDao.findByOwnerId(ownerId));
+            return "watch/index";
+        } else {
+            model.addAttribute("title", "Manager: Recent Watches");
+            model.addAttribute("watches", watchDao.findAll());
+            return "watch/index";
+        }
     }
 
     @RequestMapping(value = "all", method = RequestMethod.GET)
     public String indexAll(Model model, HttpServletRequest request){
         User user = getUserFromSession(request.getSession());
-        int ownerId = user.getId();
-        model.addAttribute("title","Watch Dashboard");
-        model.addAttribute("watches", watchDao.findByOwnerId(ownerId));
-        return "watch/all";
+        if (user.getManager() == 0) {
+            int ownerId = user.getId();
+            model.addAttribute("title", user.getUsername() + "'s " + "Watch Dashboard");
+            model.addAttribute("watches", watchDao.findByOwnerId(ownerId));
+            return "watch/all";
+        } else {
+            model.addAttribute("title", "Manager: All Watches");
+            model.addAttribute("watches",watchDao.findAll());
+            return "watch/all";
+        }
     }
 
     @RequestMapping(value = "addwatch", method = RequestMethod.GET)
