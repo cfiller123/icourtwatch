@@ -72,7 +72,7 @@ public class JudgeController extends AbstractController {
         Judge foundJudge = judgeDao.findOne(id);
         model.addAttribute("title","Delete Watch");
         model.addAttribute("judge", foundJudge);
-        return "/judge/removejudge";
+        return "judge/removejudge";
     }
 
     @RequestMapping(value = "removejudge", method = RequestMethod.POST)
