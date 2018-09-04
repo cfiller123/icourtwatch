@@ -1,10 +1,14 @@
 # CourtWatch
 
-CourtWatch is a web application that allows volunteers to add and edit court watching data (e.g., judge behavior and court outcomes in domestic violence charges) and managers to analyze and download all data.
+CourtWatch is a web application that allows volunteers to add and edit court watching data (e.g., judge behavior and court outcomes in domestic violence charges) and managers to analyze and download all data. It boasts Spring Security to authenticate users, hashes passwords to reduce risk to users if database is exposed, has different roles for volunteers and managers, and uses JavaScript to provide dynamic charts and confirms permanent actions (deletes, edits) and enable downloading of files.
 
-## Built With
+### Built With
 
 Java SE 8, Spring Security, JavaScript ThymeLeaf, and mySQL.
+
+### Getting Started
+
+You can see a demo version at courtwatchapp.herokuapp.com. To run your own version, you will need to create a local or remote database and edit your database login credentials. Currently, you will need to manually provide permissions for managers through direct editing of the database. In the User table, a "0" means that the user is a volunteer; a "1" provides the individual with manager level access. Future versions will allow web-based alternatives to direct database management.
 
 ### Author
 
