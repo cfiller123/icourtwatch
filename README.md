@@ -4,7 +4,7 @@ CourtWatch is a web application that allows volunteers to add and edit court wat
 
 ## Built With
 
-Java SE 8, Spring Security, ThymeLeaf, and mySQL.
+Java SE 8, Spring Security, JavaScript ThymeLeaf, and mySQL.
 
 ### Author
 
