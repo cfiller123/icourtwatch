@@ -16,7 +16,7 @@
 </div>
 
 <div th:if="${watches}">
-    <br/><span th:text="'There have been ' + ${watches.size()} + ' watches. Below are last five:'"/>
+    <br/><span th:text="'There are ' + ${watches.size()} + ' watches. Below are the most recent:'"/>
     <br/><br/>
     <div  th:each="watch : ${watches}" th:unless="${watchStat.index > 4}">
         <table>

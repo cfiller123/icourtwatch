@@ -16,7 +16,7 @@
 </div>
 
     <div th:if="${judges}">
-        <br/><span th:text="'There are ' + ${judges.size()} + ' judges. These are the last five:'"/>
+        <br/><span th:text="'There are ' + ${judges.size()} + ' judges. Below are the most recent:'"/>
         <br/><br/>
         <div  th:each="judge : ${judges}" th:unless="${judgeStat.index > 4}">
             <table>
